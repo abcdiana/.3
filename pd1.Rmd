@@ -1,0 +1,59 @@
+---
+title: "PDI"
+author: "diana"
+date: "2023-08-25"
+output: html_document
+---
+
+```{r}
+getwd()
+```
+```{r}
+help(mean)
+?mean
+mean
+```
+```{r}
+library(rio)
+dataStata=import("https://github.com/PoliticayGobiernoPUCP/estadistica_anapol2/raw/master/DATA/lapop2012.dta")
+```
+```{r}
+lkSAV="https://github.com/PoliticayGobiernoPUCP/estadistica_anapol2/raw/master/DATA/lapop2012.sav"
+dataSpss=import(lkSAV)
+```
+
+```{r}
+lkXLSX="https://github.com/PoliticayGobiernoPUCP/estadistica_anapol2/raw/master/DATA/lapop2012.xlsx"
+dataExcel=import(lkXLSX)
+```
+
+```{r}
+lkCSV="https://github.com/PoliticayGobiernoPUCP/estadistica_anapol2/raw/master/DATA/lapop2012.csv"
+dataCSV=import(lkCSV)
+```
+
+```{r}
+lkDOC=("https://docs.google.com/spreadsheets/d/e/2PACX-1vTc50BnnorXCAeG2BvFATXQikHPnQPhg6zxPfE8MLEBKWsUL3Vl3Skr53bZWbr9rA/pub?output=csv")
+dataDOC=read.csv(lkDOC)
+```
+
+```{r}
+library(sp)
+library(rgdal)
+```
+
+
+```{r}
+fromGit=("https://github.com/abcdiana/.3/raw/main/seattle.json") #link desde github
+
+wazipMap <- rgdal::readOGR(fromGit,stringsAsFactors = FALSE)
+```
+```{r}
+plot(wazipMap)
+```
+```{r}
+library(ggplot2)
+mapDIS=sf::read_sf("seattle.shp")
+ggplot(mapDIS) + geom_sf()
+```
+
